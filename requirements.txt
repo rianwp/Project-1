@@ -4,7 +4,9 @@ charset-normalizer==2.0.9
 click==8.0.3
 colorama==0.4.4
 cycler==0.11.0
+distlib==0.3.4
 docutils==0.18.1
+filelock==3.4.2
 Flask==2.0.2
 Flask-Login==0.5.0
 Flask-SQLAlchemy==2.5.1
@@ -26,6 +28,8 @@ panda3d-gltf==0.13
 panda3d-simplepbr==0.9
 pefile==2021.9.3
 Pillow==8.4.0
+pipenv==2022.1.8
+platformdirs==2.5.0
 pygame==2.1.0
 Pygments==2.10.0
 pyinstaller==4.7
@@ -39,4 +43,7 @@ screeninfo==0.7
 six==1.16.0
 SQLAlchemy==1.4.29
 urllib3==1.26.7
+virtualenv==20.13.1
+virtualenv-clone==0.5.7
 Werkzeug==2.0.2
+gunicorn==19.9.0
