@@ -5,7 +5,7 @@
       <div class="col-12 d-flex justify-content-center">
         <div class="show-image">
           {% if user.img == "Kosong" %} <img src={{ url_for('static', filename='userimg.png') }} class="rounded-circle prf-img"> {% else %}
-          <img src="http://127.0.0.1:5000/img" width="200" height="200" class="rounded-circle prf-img" />
+          <img src="https://mitrasoftware.herokuapp.com/img" width="200" height="200" class="rounded-circle prf-img" />
           {% endif %}
           <div class="overlay rounded-circle"></div>
           <form method="POST" enctype="multipart/form-data" id="formimg">
