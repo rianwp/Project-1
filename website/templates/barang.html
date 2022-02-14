@@ -1,0 +1,157 @@
+{% extends "base.html" %} {% block title %}Barang{% endblock %} {% block content %}
+
+<!-- Modal Input-->
+<div class="modal fade" id="inputdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inputdataLabel">Tambah Barang</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form name="formbarang" method="POST" id="formbarang">
+            <div class="row">
+              <label for="nama" class="form-label">Nama Barang</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Barang" />
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <label for="harga" class="form-label">Harga</label>
+              <div class="input-group">
+                <div class="input-group-text">Rp</div>
+                <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukan Harga Barang" />
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <label for="stock" class="form-label">Stock</label>
+              <div class="input-group">
+                <input type="number" class="form-control" id="stock" name="stock" placeholder="Masukan Stock Barang" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="formbarang" class="btn btn-primary">Tambahkan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="mt-5 pt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 fw-bold fs-3 judul">Barang</div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow">
+          <div class="card-header">
+            <span><i class="me-2 bi bi-table"></i></span>
+            <span class="fw-bold">Data Barang</span>
+            <span>
+              <button type="button" class="btn btn-success btn-sm float-end" data-bs-toggle="modal" data-bs-target="#inputdata">
+                Tambah
+                <i class="bi bi-plus"></i>
+              </button>
+            </span>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive table-height">
+              <table class="table table-borderless">
+                <thead class="table-dark">
+                  <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Nama Barang</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Tanggal Input</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in user.datauser %}
+                  <tr class="text-center">
+                    <td scope="row" class="fw-bold">{{ loop.index }}</td>
+                    <td>{{row.nama}}</td>
+                    <td>Rp.{{row.harga}}</td>
+                    <td>{{row.stock}}</td>
+                    <td>{{row.date.strftime("%d %B %Y %H:%M")}}</td>
+                    <td class="btn-group" role="group">
+                      <button type="button" href="/update/{{row.id}}" type="button" class="btn btn-warning btn-sm btn-jarak" data-bs-toggle="modal" data-bs-target="#editdata{{row.id}}">Edit</button>
+                      <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deletedata{{row.id}}">Hapus</button>
+                    </td>
+                  </tr>
+                  <!-- Modal Delete-->
+                  <div class="modal fade" id="deletedata{{row.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">Yakin ingin menghapus data?</div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary float-end" onClick="deleteData({{row.id}})">Yakin</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal Edit-->
+                  <div class="modal fade" id="editdata{{row.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="inputdataLabel">Edit Barang</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="container">
+                            <form id="formedit{{row.id}}" name="formedit{{row.id}}" method="POST" action="{{(url_for('views.update'))}}">
+                              <div class="row">
+                                <label for="nama" class="form-label">Nama Barang</label>
+                                <div class="input-group">
+                                  <input type="hidden" id="id" name="id" value="{{row.id}}" />
+                                  <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukan Nama Barang" value="{{row.nama}}" />
+                                </div>
+                              </div>
+                              <br />
+                              <div class="row">
+                                <label for="harga" class="form-label">Harga</label>
+                                <div class="input-group">
+                                  <div class="input-group-text">Rp</div>
+                                  <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukan Harga Barang" value="{{row.harga}}" />
+                                </div>
+                              </div>
+                              <br />
+                              <div class="row">
+                                <label for="stock" class="form-label">Stock</label>
+                                <div class="input-group">
+                                  <input type="number" class="form-control" id="stock" name="stock" placeholder="Masukan Stock Barang" value="{{row.stock}}" />
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary" form="formedit{{row.id}}">Edit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,196 @@
+.jumbotron {
+  padding: 2rem 1rem;
+  background-color: #212529;
+}
+.loginbg {
+  background-image: url(bg12.jpg);
+
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+
+  /* Background image is fixed in the viewport so that it doesn't move when
+the content's height is greater than the image's height */
+  background-attachment: fixed;
+
+  /* This is what makes the background image rescale based
+on the container's size */
+  background-size: cover;
+
+  /* Set a background color that will be displayed
+while the background image is loading */
+  background-color: #464646;
+}
+
+:root {
+  --offcanvas-width: 270px;
+  --topNavbarHeight: 56px;
+}
+.sidebar-nav {
+  width: var(--offcanvas-width);
+  transition: 0.4s;
+  top: var(--topNavbarHeight);
+  height: calc(100% - var(--topNavbarHeight));
+}
+
+.loginbox-down {
+  margin-top: 20vh;
+}
+
+.judul {
+  margin-bottom: 2vh;
+}
+
+.btn-jarak {
+  margin-right: 10px;
+}
+
+.withnav-true {
+  position: fixed;
+  width: 100%;
+  height: 58px;
+  margin-top: -50px;
+  transition: 0.5s;
+}
+.withnav-false {
+  position: fixed;
+  width: 100%;
+  height: 58px;
+  margin-top: 0px;
+  transition: 0.5s;
+}
+
+.sidebar-link .right-icon {
+  transition: all ease 0.25s;
+}
+
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
+
+@media (min-width: 992px) {
+  .bodyset {
+    overflow: auto !important;
+  }
+  .offcanvas-backdrop::before {
+    display: none !important;
+  }
+  main {
+    margin-left: var(--offcanvas-width);
+  }
+  .sidebar-nav {
+    transform: none;
+    visibility: visible !important;
+    top: var(--topNavbarHeight);
+    height: calc(100% - var(--topNavbarHeight));
+  }
+}
+
+.alert {
+  z-index: 4;
+}
+
+.navbar {
+  z-index: 3;
+}
+
+.table-height {
+  max-height: 65vh;
+}
+
+table {
+  position: relative;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.btn-group {
+  z-index: 1;
+}
+
+.table-height-transaksi {
+  height: 20vh;
+}
+
+.card-height {
+  height: 150px;
+}
+
+.chart-height {
+  max-height: 45vh;
+}
+
+.file {
+  display: none;
+}
+
+.show-image {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  z-index: 2;
+}
+
+.show-image:hover .btn-hide {
+  display: block;
+  transition: 0.4s;
+}
+
+.show-image .btn-hide {
+  position: relative;
+  display: none;
+  margin-top: -100px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: black;
+}
+
+.show-image:hover .overlay {
+  opacity: 0.75;
+}
+
+.profile-top {
+  margin-top: -100px;
+  z-index: 1;
+}
+
+.profile-body {
+  padding-top: 100px;
+}
+
+.prf-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.bs-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collapsing {
+    transition-property: height, visibility;
+    transition-duration: 0.35s;
+  }
+}

@@ -1,0 +1,81 @@
+{% extends "base.html" %} {% block title %}Profile{% endblock %} {% block content %}
+<main class="mt-5 pt-3">
+  <div class="container-fluid">
+    <div class="row mt-2">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="show-image">
+          {% if user.img == "Kosong" %} <img src={{ url_for('static', filename='userimg.png') }} class="rounded-circle prf-img"> {% else %}
+          <img src="http://127.0.0.1:5000/img" width="200" height="200" class="rounded-circle prf-img" />
+          {% endif %}
+          <div class="overlay rounded-circle"></div>
+          <form method="POST" enctype="multipart/form-data" id="formimg">
+            <label for="file" class="btn btn-primary btn-hide">Pilih Foto</label>
+            <input class="file" type="file" name="file" id="file" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <form method="POST" id="formprofile">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="card col-10 bg-light profile-top">
+            <div class="card-body profile-body shadow">
+              <div class="container">
+                <div class="row">
+                  <label for="fullname" class="text-black form-label">Nama Lengkap</label>
+                  <div class="input-group">
+                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                    <input type="text" class="form-control" id="fullname" name="fullname" placeholder="{{user.fullname}}" />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <label for="username" class="text-black form-label">Username</label>
+                  <div class="input-group">
+                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="{{user.username}}" />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <label for="password" class="text-black form-label">Password</label>
+                  <div class="input-group">
+                    <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="{{passwordlen}}" />
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#konfirmasiperubahan">Simpan</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="konfirmasiperubahan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Perubahan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <label for="passwordconfirm" class="text-black form-label">Masukan Password Untuk Melakukan Perubahan</label>
+                <div class="input-group">
+                  <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
+                  <input type="password" class="form-control" id="passwordconfirm" name="passwordconfirm" placeholder="Konfirmasi" />
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" form="formprofile" class="btn btn-primary float-end">Simpan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Dashboard{% endblock %} {% block body %}onload="showChart({{jmlm[0]}}, {{jmlm[1]}}, {{jmlm[2]}}, {{jmlm[3]}}, {{jmlm[4]}}, {{jmlm[5]}}, {{jmlm[6]}}, {{jmlm[7]}}, {{jmlm[8]}}, {{jmlm[9]}},
+{{jmlm[10]}}, {{jmlm[11]}}, {{yearnow}})"{% endblock %} {% block content %}
+<main class="mt-5 pt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 fw-bold fs-3 judul">Dashboard</div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+        <div class="card text-white bg-dark mb-3 card-height">
+          <div class="card-body">
+            <h6 class="card-title">Total Produk Terjual</h6>
+            <div class="card-text fs-4 fw-bold">{{totaljumlah}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card text-white bg-success mb-3 card-height">
+          <div class="card-body">
+            <h6 class="card-title">Total Pemasukan</h6>
+            <div class="card-text fs-4 fw-bold">Rp.{{totalpemasukan}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card text-white bg-primary mb-3 card-height">
+          <div class="card-body">
+            <h6 class="card-title">Produk Terlaris</h6>
+            <div class="card-text fs-4 fw-bold">{{nama_max_jumlah}}</div>
+            <div class="card-text">Terjual {{max_jumlah}} buah</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card text-white bg-danger mb-3 card-height">
+          <div class="card-body">
+            <h6 class="card-title">Keuntungan Tertinggi</h6>
+            <div class="card-text fs-4 fw-bold">{{nama_max_harga}}</div>
+            <div class="card-text">Menghasilkan Rp.{{max_harga}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow">
+          <div class="card-header">
+            <span><i class="me-2 bi bi-bar-chart-line-fill"></i></span>
+            <span class="fw-bold">Penjualan Produk Bulanan</span>
+          </div>
+          <div class="card-body">
+            <canvas id="myChart" class="chart-height"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+{% endblock %}
