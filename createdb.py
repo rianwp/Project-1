@@ -1,4 +1,3 @@
-from website import create_app
-from website import create_database
+from website import db
 
-create_database(create_app())
+db.create_all()
