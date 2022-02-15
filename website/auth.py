@@ -41,7 +41,7 @@ def admin():
         fullname = request.form.get('fullname')
         password = request.form.get('password')
         user = User.query.filter_by(username=username).first()
-        null = "Kosong"
+        null = 0
         if user:
             flash('Username sudah digunakan', category='error')
             return redirect(url_for('auth.admin'))
