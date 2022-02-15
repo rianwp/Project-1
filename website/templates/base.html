@@ -41,7 +41,7 @@
         <nav class="navbar-dark">
           <ul class="navbar-nav">
             <li class="text-center mt-3">
-              {% if user.img == 0 %} <img src={{ url_for('static', filename='userimg.png') }} class="rounded-circle bs-img"> {% else %}
+              {% if user.img == "Kosong" %} <img src={{ url_for('static', filename='userimg.png') }} class="rounded-circle bs-img"> {% else %}
               <img src="https://mitrasoftware.herokuapp.com/img" width="100" height="100" class="rounded-circle bs-img" />
               {% endif %}
             </li>
