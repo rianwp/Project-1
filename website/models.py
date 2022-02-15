@@ -2,6 +2,7 @@ from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from datetime import datetime
+import pytz
 
 class Transaksi(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -9,7 +10,7 @@ class Transaksi(db.Model):
     nama_transaksi = db.Column(db.String(10000))
     harga_transaksi = db.Column(db.Integer)
     jumlah = db.Column(db.Integer)
-    date_transaksi = db.Column(db.DateTime(timezone=True), default=datetime.now())
+    date_transaksi = db.Column(db.DateTime(timezone=True), default=datetime.now(pytz.timezone('Asia/Bangkok')))
     user_id_transaksi = db.Column(db.Integer, db.ForeignKey('user.id'))
     
 class Databarang(db.Model):
@@ -17,7 +18,7 @@ class Databarang(db.Model):
     nama = db.Column(db.String(10000))
     harga = db.Column(db.Integer)
     stock = db.Column(db.Integer)
-    date = db.Column(db.DateTime(timezone=True), default=datetime.now())
+    date = db.Column(db.DateTime(timezone=True), default=datetime.now(pytz.timezone('Asia/Bangkok')))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
 class User(db.Model, UserMixin):
