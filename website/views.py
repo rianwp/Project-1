@@ -7,6 +7,7 @@ from .models import Indexintegrity, Transaksi, User, Databarang
 from . import db
 import json
 from datetime import datetime
+import pytz
 views = Blueprint('views', __name__)
 
 ALLOWED_EXTENSION = set(['png','jpg', 'jpeg'])
@@ -22,7 +23,7 @@ def default():
 @views.route('/dashboard')
 @login_required
 def dashboard():
-    yearnow = datetime.now().strftime("%Y")
+    yearnow = datetime.now(pytz.timezone('Asia/Bangkok')).strftime("%Y")
     hargabanding = []
     jumlahbanding = []
     idlist = []
