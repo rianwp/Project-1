@@ -46,7 +46,7 @@ def admin():
             flash('Username sudah digunakan', category='error')
             return redirect(url_for('auth.admin'))
         else:
-            new_user = User(username=username, fullname=fullname, password=generate_password_hash(password, method='sha256'), password_length=len(password), img=null, imgname=null, mimetype=null)
+            new_user = User(username=username, fullname=fullname, password=generate_password_hash(password, method='sha256'), password_length=len(password), imgname=null, mimetype=null)
             db.session.add(new_user)
             db.session.commit()
             flash('Akun Sukses Dibuat', category='success')
