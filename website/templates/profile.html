@@ -4,7 +4,7 @@
     <div class="row mt-2">
       <div class="col-12 d-flex justify-content-center">
         <div class="show-image">
-          {% if user.img == "Kosong" %} <img src={{ url_for('static', filename='userimg.png') }} class="rounded-circle prf-img"> {% else %}
+          {% if user.imgname == "Kosong" %} <img src={{ url_for('static', filename='userimg.png') }} class="rounded-circle prf-img"> {% else %}
           <img src="https://mitrasoftware.herokuapp.com/img" width="200" height="200" class="rounded-circle prf-img" />
           {% endif %}
           <div class="overlay rounded-circle"></div>
