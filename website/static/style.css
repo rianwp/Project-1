@@ -182,6 +182,21 @@ th {
   object-fit: cover;
 }
 
+@media (max-width: 540px) {
+  .prf-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  .profile-top {
+    margin-top: -75px;
+    z-index: 1;
+  }
+  .profile-body {
+    padding-top: 75px;
+  }
+}
+
 .bs-img {
   width: 100px;
   height: 100px;
