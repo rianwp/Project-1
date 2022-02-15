@@ -1,15 +1,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
+import os
 from flask_login import LoginManager
 
 db = SQLAlchemy()
-DB_NAME = "database.db"
+
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'rianwp2015'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
     app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024
     
     db.init_app(app)
@@ -35,11 +36,7 @@ def create_app():
     
     return app
 
-
-
-
 def create_database(app):
-    if not path.exists('website/' + DB_NAME):
-        db.create_all(app=app)
-        print('Created Database!')
+    db.create_all(app=app)
+        
     
