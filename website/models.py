@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     fullname = db.Column(db.String(150))
     password_length = db.Column(db.Integer)
-    img = db.Column(db.LargeBinary)
+    img = db.Column(db.Text)
     imgname = db.Column(db.Text)
     mimetype = db.Column(db.Text)
     datauser = db.relationship('Databarang')
